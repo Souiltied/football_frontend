@@ -1,0 +1,27 @@
+<div class="flex-shrink-0">
+    <div class="container shadow p-3 my-5 bg-dark rounded d-block">
+        <div class=" align-items-center">
+            <h2 class="text-center">Available options to filter the data</h2>
+            <div class="d-flex justify-content-center">
+                <app-dropdown [items]="Seasons" [tooltip]="seasonToolTip" [selection]="selectedSeason"
+                    (selectionChange)="setSeason($event)">
+                </app-dropdown>
+            </div>
+                <p class="text-center">Select a table to display:</p>
+                <div class="d-flex justify-content-center">
+                    <mat-radio-button value="1" class="d-block m-2" (change)="setShowSimpleTable($event)">Simplified Table</mat-radio-button>
+                    <mat-radio-button value="2" class="d-block m-2" (change)="setShowComplexTable($event)">Complex Table</mat-radio-button>
+                </div>
+
+            
+        </div>
+    </div>
+</div>
+
+<div [ngClass]="this.showSimpleTable === true ? 'd-block' : 'd-none'">
+    <app-simple-table [seasonId]="seasonId"></app-simple-table>
+</div>
+
+<div [ngClass]="this.showComplexTable === true ? 'd-block' : 'd-none'">
+    <app-complex-table [seasonId]="seasonId"></app-complex-table>
+</div>

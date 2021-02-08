@@ -1,0 +1,30 @@
+<div class="w-100 shadow-lg p-1 bg-dark">
+  <div class="w-100 container">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark align-middle">
+            <a class="navbar-brand"  [routerLink]="['home']">
+              <img src="assets/images/epl-logo.png" class="d-inline-block align-middle logo" alt="English Premier League"/> 
+              Football Stats
+          </a>
+        
+          <div id="nav-icon1" class="navbar-toggler" [ngClass]="this.expanded === true ? 'open' : ''" (click)="toggleMenuPosition()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="collapse navbar-collapse" [ngClass]="{ 'show': expanded }">
+            <ul class="navbar-nav mr-auto">
+        
+              <li class="nav-item">
+                <a class="nav-link text-center"  [ngClass]="{'bg-secondary text-white': title == 'Home'}" [routerLink]="['home']">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center"  [ngClass]="{'bg-secondary text-white': title == 'Football seasons'}" [routerLink]="['stats-page/stats']">Football seasons</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+  </div>
+</div>

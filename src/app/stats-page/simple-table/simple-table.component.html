@@ -1,0 +1,65 @@
+<ngx-spinner
+bdColor="rgba(51,51,51,51)"
+size="medium"
+color="#cc33ca"
+type="square-jelly-box"
+>
+<p style="font-size: 20px; color: white">Loading...</p></ngx-spinner>
+
+<div class="flex-shrink-0" [ngClass]="this.show === true ? 'd-block' : 'd-none'">
+    <div style="overflow-x:auto;">
+        <div class="d-flex justify-content-center">
+            <label for="search"><h3>Search Table </h3></label>
+            <input type="text" id="search" (keyup.enter)="searchData($event)" (blur)="searchData($event)">
+        </div>
+        <hr>
+        <table class="table table-striped table-dark shadow p-3 mb-5 bg-dark rounded">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">SeasonId</th>
+                    <th scope="col">Game Date</th>
+                    <th scope="col">Home Team Name</th>
+                    <th scope="col">Full Time Score (Home Team)</th>
+                    <th scope="col">Away Team Name</th>
+                    <th scope="col">Full Time Score (Away Team)</th>
+                    <th scope="col">Game Referee</th>
+                    <th scope="col">Existing Notes</th>
+                    <th scope="col">Change Notes</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let game of games | slice: (page-1) * pageSize : page * pageSize" class="text-center" [ngClass]="this.searched === true ? 'd-none' : ''">
+                <td>{{ game.SeasonId }}</td>
+                <td>{{ game.Date }}</td>
+                <td>{{ game.HomeTeam }}</td>
+                <td>{{ game.FTHG }}</td>
+                <td>{{ game.AwayTeam }}</td>
+                <td>{{ game.FTAG }}</td>
+                <td>{{ game.Referee }}</td>
+                <td>
+                    <label class="text-light" for="Notes">{{ game.Note }}</label>
+                </td>
+                <td>
+                    <input class="text-light" #input (keyup.enter)="setNotes(game, input.value)" (blur)="setNotes(game, input.value)" type="text" name="Notes" id="Notes">
+                </td>
+            </tr>
+            <tr [ngClass]="this.searched === true ? 'd-block' : 'd-none'" *ngFor="let game of filteredGames | slice: (page-1) * pageSize : page * pageSize" [ngClass]="this.searched === true ? '' : 'd-none'">
+                <td>{{ game.SeasonId }}</td>
+                <td>{{ game.Date }}</td>
+                <td>{{ game.HomeTeam }}</td>
+                <td>{{ game.FTHG }}</td>
+                <td>{{ game.AwayTeam }}</td>
+                <td>{{ game.FTAG }}</td>
+                <td>{{ game.Referee }}</td>
+                <td>
+                    <label class="text-light" for="Notes">{{ game.Note }}</label>
+                </td>
+                <td>
+                    <input class="text-light" #input (keyup.enter)="setNotes(game, input.value)" (blur)="setNotes(game, input.value)" type="text" name="Notes" id="Notes">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" size="sm"></ngb-pagination>
+    </div>
+</div>

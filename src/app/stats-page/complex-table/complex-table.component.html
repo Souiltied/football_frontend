@@ -1,0 +1,258 @@
+<ngx-spinner
+bdColor="rgba(51,51,51,51)"
+size="medium"
+color="#cc33ca"
+type="square-jelly-box">
+<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<div class="flex-shrink-0" [ngClass]="this.show === true ? 'd-block' : 'd-none'">
+    <div style="overflow-x:auto;">
+        <div class="d-flex justify-content-center">
+            <label for="search"><h3>Search Table </h3></label>
+            <input type="text" id="search" (keyup.enter)="searchData($event)" (blur)="searchData($event)">
+        </div>
+        <hr>
+        <table class="table table-striped table-dark shadow p-3 mb-5 bg-dark rounded">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Season Id</th>
+                    <th scope="col">Game Date</th>
+                    <th scope="col">Home Team Name</th>
+                    <th scope="col">Full Time Score (Home Team)</th>
+                    <th scope="col">Away Team Name</th>
+                    <th scope="col">Full Time Score (Away Team)</th>
+                    <th scope="col">Game Referee</th>
+                    <th scope="col">FTR</th>   
+                    <th scope="col">HTHG</th> 
+                    <th scope="col">HTAG</th>
+                    <th scope="col">HTR</th> 
+                    <th scope="col">HS</th>
+                    <th scope="col">AS</th>
+                    <th scope="col">HST</th>
+                    <th scope="col">AST</th>
+                    <th scope="col">HF</th>
+                    <th scope="col">AF</th>
+                    <th scope="col">HC</th>
+                    <th scope="col">AC</th>
+                    <th scope="col">HY</th>
+                    <th scope="col">AY</th>
+                    <th scope="col">HR</th>
+                    <th scope="col">AR</th>
+                    <th scope="col">B365H</th>
+                    <th scope="col">B365D</th>
+                    <th scope="col">B365A</th>
+                    <th scope="col">BWH</th>
+                    <th scope="col">BWD</th>
+                    <th scope="col">BWA</th>
+                    <th scope="col">GBH</th>
+                    <th scope="col">GBD</th>
+                    <th scope="col">GBA</th>
+                    <th scope="col">IWH</th>
+                    <th scope="col">IWD</th>
+                    <th scope="col">IWA</th>
+                    <th scope="col">LBH</th>
+                    <th scope="col">LBD</th>
+                    <th scope="col">LBA</th>
+                    <th scope="col">SBH</th>
+                    <th scope="col">SBD</th>
+                    <th scope="col">SBA</th>
+                    <th scope="col">WHH</th>
+                    <th scope="col">WHD</th>
+                    <th scope="col"> WHA</th>
+                    <th scope="col">SJH</th>
+                    <th scope="col">SJD</th>
+                    <th scope="col">SJA</th>
+                    <th scope="col">VCH</th>
+                    <th scope="col">VCD</th>
+                    <th scope="col">VCA</th>
+                    <th scope="col">BSH</th>
+                    <th scope="col">BSD</th>
+                    <th scope="col">BSA</th>
+                    <th scope="col">Bb1X2</th>
+                    <th scope="col">BbMxH</th>
+                    <th scope="col">BbAvH</th>
+                    <th scope="col">BbMxD</th>
+                    <th scope="col">BbAvD</th>
+                    <th scope="col">BbMxA</th>
+                    <th scope="col">BbAvA</th>
+                    <th scope="col">BbOU</th>
+                    <th scope="col">BbMxLessThanTwoFive</th>
+                    <th scope="col">BbAvLessThanTwoFive</th>
+                    <th scope="col">BbMxMoreThanTwoFive</th>
+                    <th scope="col">BbAvMoreThanTwoFive</th>
+                    <th scope="col">BbAH</th>
+                    <th scope="col">BbAHh</th>
+                    <th scope="col">BbMxAHH</th>
+                    <th scope="col">BbAvAHH</th>
+                    <th scope="col">BbMxAHA</th>
+                    <th scope="col">BbAvAHA</th>
+                    <th scope="col">PSCH</th>
+                    <th scope="col">PSCD</th>
+                    <th scope="col">PSCA</th>
+                    <th scope="col">Existing Notes</th>
+                    <th scope="col">Change Notes</th>
+                </tr>
+            </thead>
+                <tr *ngFor="let game of games | slice: (page-1) * pageSize : page * pageSize" class="text-center" [ngClass]="this.searched === true ? 'd-none' : ''">
+                    <td>{{ game.SeasonID }}</td>
+                    <td>{{ game.Date }}</td>
+                    <td>{{ game.HomeTeam }}</td>
+                    <td>{{ game.FTHG }}</td>
+                    <td>{{ game.AwayTeam }}</td>
+                    <td>{{ game.FTAG }}</td>
+                    <td>{{ game.Referee }}</td>
+                    <td>{{ game.FTR }}</td>   
+                    <td>{{ game.HTHG }}</td> 
+                    <td>{{ game.HTAG }}</td>
+                    <td>{{ game.HTR }}</td> 
+                    <td>{{ game.HS }}</td>
+                    <td>{{ game.AS }}</td>
+                    <td>{{ game.HST }}</td>
+                    <td>{{ game.AST }}</td>
+                    <td>{{ game.HF }}</td>
+                    <td>{{ game.AF }}</td>
+                    <td>{{ game.HC }}</td>
+                    <td>{{ game.AC }}</td>
+                    <td>{{ game.HY }}</td>
+                    <td>{{ game.AY }}</td>
+                    <td>{{ game.HR }}</td>
+                    <td>{{ game.AR }}</td>
+                    <td>{{ game.B365H }}</td>
+                    <td>{{ game.B365D }}</td>
+                    <td>{{ game.B365A }}</td>
+                    <td>{{ game.BWH }}</td>
+                    <td>{{ game.BWD }}</td>
+                    <td>{{ game.BWA }}</td>
+                    <td>{{ game.GBH }}</td>
+                    <td>{{ game.GBD }}</td>
+                    <td>{{ game.GBA }}</td>
+                    <td>{{ game.IWH }}</td>
+                    <td>{{ game.IWD }}</td>
+                    <td>{{ game.IWA }}</td>
+                    <td>{{ game.LBH }}</td>
+                    <td>{{ game.LBD }}</td>
+                    <td>{{ game.LBA }}</td>
+                    <td>{{ game.SBH }}</td>
+                    <td>{{ game.SBD }}</td>
+                    <td>{{ game.SBA }}</td>
+                    <td>{{ game.WHH }}</td>
+                    <td>{{ game.WHD }}</td>
+                    <td>{{ game.WHA }}</td>
+                    <td>{{ game.SJH }}</td>
+                    <td>{{ game.SJD }}</td>
+                    <td>{{ game.SJA }}</td>
+                    <td>{{ game.VCH }}</td>
+                    <td>{{ game.VCD }}</td>
+                    <td>{{ game.VCA }}</td>
+                    <td>{{ game.BSH }}</td>
+                    <td>{{ game.BSD }}</td>
+                    <td>{{ game.BSA }}</td>
+                    <td>{{ game.Bb1X2 }}</td>
+                    <td>{{ game.BbMxH }}</td>
+                    <td>{{ game.BbAvH }}</td>
+                    <td>{{ game.BbMxD }}</td>
+                    <td>{{ game.BbAvD }}</td>
+                    <td>{{ game.BbMxA }}</td>
+                    <td>{{ game.BbAvA }}</td>
+                    <td>{{ game.BbOU }}</td>
+                    <td>{{ game.BbMxLessThanTwoFive }}</td>
+                    <td>{{ game.BbAvLessThanTwoFive }}</td>
+                    <td>{{ game.BbMxMoreThanTwoFive }}</td>
+                    <td>{{ game.BbAvMoreThanTwoFive }}</td>
+                    <td>{{ game.BbAH }}</td>
+                    <td>{{ game.BbAHh }}</td>
+                    <td>{{ game.BbMxAHH }}</td>
+                    <td>{{ game.BbAvAHH }}</td>
+                    <td>{{ game.BbMxAHA }}</td>
+                    <td>{{ game.BbAvAHA }}</td>
+                    <td>{{ game.PSCH }}</td>
+                    <td>{{ game.PSCD }}</td>
+                    <td>{{ game.PSCA }}</td>
+                    <td><label class="text-light" for="Notes">{{ game.Note }}</label></td>
+                    <td><input class="text-light" #input (keyup.enter)="setNotes(game, input.value)" (blur)="setNotes(game, input.value)" type="text" name="Notes" id="Notes"></td>
+                </tr>
+                <tr *ngFor="let game of filteredGames | slice: (page-1) * pageSize : page * pageSize" class="text-center" [ngClass]="this.searched === true ? '' : 'd-none'">
+                    <td>{{ game.SeasonID }}</td>
+                    <td>{{ game.Date }}</td>
+                    <td>{{ game.HomeTeam }}</td>
+                    <td>{{ game.FTHG }}</td>
+                    <td>{{ game.AwayTeam }}</td>
+                    <td>{{ game.FTAG }}</td>
+                    <td>{{ game.Referee }}</td>
+                    <td>{{ game.FTR }}</td>   
+                    <td>{{ game.HTHG }}</td> 
+                    <td>{{ game.HTAG }}</td>
+                    <td>{{ game.HTR }}</td> 
+                    <td>{{ game.HS }}</td>
+                    <td>{{ game.AS }}</td>
+                    <td>{{ game.HST }}</td>
+                    <td>{{ game.AST }}</td>
+                    <td>{{ game.HF }}</td>
+                    <td>{{ game.AF }}</td>
+                    <td>{{ game.HC }}</td>
+                    <td>{{ game.AC }}</td>
+                    <td>{{ game.HY }}</td>
+                    <td>{{ game.AY }}</td>
+                    <td>{{ game.HR }}</td>
+                    <td>{{ game.AR }}</td>
+                    <td>{{ game.B365H }}</td>
+                    <td>{{ game.B365D }}</td>
+                    <td>{{ game.B365A }}</td>
+                    <td>{{ game.BWH }}</td>
+                    <td>{{ game.BWD }}</td>
+                    <td>{{ game.BWA }}</td>
+                    <td>{{ game.GBH }}</td>
+                    <td>{{ game.GBD }}</td>
+                    <td>{{ game.GBA }}</td>
+                    <td>{{ game.IWH }}</td>
+                    <td>{{ game.IWD }}</td>
+                    <td>{{ game.IWA }}</td>
+                    <td>{{ game.LBH }}</td>
+                    <td>{{ game.LBD }}</td>
+                    <td>{{ game.LBA }}</td>
+                    <td>{{ game.SBH }}</td>
+                    <td>{{ game.SBD }}</td>
+                    <td>{{ game.SBA }}</td>
+                    <td>{{ game.WHH }}</td>
+                    <td>{{ game.WHD }}</td>
+                    <td>{{ game.WHA }}</td>
+                    <td>{{ game.SJH }}</td>
+                    <td>{{ game.SJD }}</td>
+                    <td>{{ game.SJA }}</td>
+                    <td>{{ game.VCH }}</td>
+                    <td>{{ game.VCD }}</td>
+                    <td>{{ game.VCA }}</td>
+                    <td>{{ game.BSH }}</td>
+                    <td>{{ game.BSD }}</td>
+                    <td>{{ game.BSA }}</td>
+                    <td>{{ game.Bb1X2 }}</td>
+                    <td>{{ game.BbMxH }}</td>
+                    <td>{{ game.BbAvH }}</td>
+                    <td>{{ game.BbMxD }}</td>
+                    <td>{{ game.BbAvD }}</td>
+                    <td>{{ game.BbMxA }}</td>
+                    <td>{{ game.BbAvA }}</td>
+                    <td>{{ game.BbOU }}</td>
+                    <td>{{ game.BbMxLessThanTwoFive }}</td>
+                    <td>{{ game.BbAvLessThanTwoFive }}</td>
+                    <td>{{ game.BbMxMoreThanTwoFive }}</td>
+                    <td>{{ game.BbAvMoreThanTwoFive }}</td>
+                    <td>{{ game.BbAH }}</td>
+                    <td>{{ game.BbAHh }}</td>
+                    <td>{{ game.BbMxAHH }}</td>
+                    <td>{{ game.BbAvAHH }}</td>
+                    <td>{{ game.BbMxAHA }}</td>
+                    <td>{{ game.BbAvAHA }}</td>
+                    <td>{{ game.PSCH }}</td>
+                    <td>{{ game.PSCD }}</td>
+                    <td>{{ game.PSCA }}</td>
+                    <td><label class="text-light" for="Notes">{{ game.Note }}</label></td>
+                    <td><input class="text-light" #input (keyup.enter)="setNotes(game, input.value)" (blur)="setNotes(game, input.value)" type="text" name="Notes" id="Notes"></td>
+                </tr>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <ngb-pagination  [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" size="sm"></ngb-pagination>
+    </div>
+</div>
